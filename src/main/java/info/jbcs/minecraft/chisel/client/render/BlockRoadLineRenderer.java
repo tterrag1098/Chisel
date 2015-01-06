@@ -52,7 +52,7 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
         float f2 = (i1 >> 8 & 255) / 255.0F;
         float f3 = (i1 & 255) / 255.0F;
 
-        if(EntityRenderer.anaglyphEnable)
+        if (EntityRenderer.anaglyphEnable)
         {
             float f4 = (f1 * 30.0F + f2 * 59.0F + f3 * 11.0F) / 100.0F;
             float f5 = (f1 * 30.0F + f2 * 70.0F) / 100.0F;
@@ -68,27 +68,28 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
         boolean W = world.getBlock(x - 1, y, z).equals(block);
         boolean E = world.getBlock(x + 1, y, z).equals(block);
 
-        if(!N && !S && !W && !E)
+        if (!N && !S && !W && !E)
         {
             renderer.renderStandardBlock(block, x, y, z);
             return true;
         }
 
-        if(N && S)
+        if (N && S)
         {
             renderer.uvRotateTop = 0;
             renderer.overrideBlockTexture = block.fullLineIcon;
             renderer.renderStandardBlock(block, x, y, z);
 
-        } else
+        }
+        else
         {
-            if(N)
+            if (N)
             {
                 renderer.uvRotateTop = 0;
                 renderer.overrideBlockTexture = block.halfLineIcon;
                 renderer.renderStandardBlock(block, x, y, z);
             }
-            if(S)
+            if (S)
             {
                 renderer.uvRotateTop = 3;
                 renderer.overrideBlockTexture = block.halfLineIcon;
@@ -97,20 +98,21 @@ public class BlockRoadLineRenderer implements ISimpleBlockRenderingHandler
 
         }
 
-        if(E && W)
+        if (E && W)
         {
             renderer.uvRotateTop = 1;
             renderer.overrideBlockTexture = block.fullLineIcon;
             renderer.renderStandardBlock(block, x, y, z);
-        } else
+        }
+        else
         {
-            if(E)
+            if (E)
             {
                 renderer.uvRotateTop = 1;
                 renderer.overrideBlockTexture = block.halfLineIcon;
                 renderer.renderStandardBlock(block, x, y, z);
             }
-            if(W)
+            if (W)
             {
                 renderer.uvRotateTop = 2;
                 renderer.overrideBlockTexture = block.halfLineIcon;

@@ -37,14 +37,14 @@ public class TexturedBox
         int v1 = v;
         int tw = texw;
 
-        if(tw > w)
+        if (tw > w)
         {
             tw = w;
         }
 
         int th = texh;
 
-        if(th > h)
+        if (th > h)
         {
             th = h;
         }

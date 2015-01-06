@@ -42,9 +42,9 @@ public class EntityHolystoneFX extends EntityFX
     {
         particleScale = 0.25f + initialScale * (float) Math.sin((particleAge + angleOffset) / 180.f);
 
-        if(particleAge < fadetime)
+        if (particleAge < fadetime)
             particleAlpha = particleAge / fadetime;
-        else if(particleAge + fadetime >= particleMaxAge)
+        else if (particleAge + fadetime >= particleMaxAge)
             particleAlpha = (particleMaxAge - particleAge) / fadetime;
         else
             particleAlpha = 1.0f;
@@ -56,7 +56,7 @@ public class EntityHolystoneFX extends EntityFX
     @Override
     public void onUpdate()
     {
-        if(particleAge++ >= particleMaxAge)
+        if (particleAge++ >= particleMaxAge)
         {
             setDead();
         }

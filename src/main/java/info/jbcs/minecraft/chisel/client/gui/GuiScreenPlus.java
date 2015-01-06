@@ -51,16 +51,15 @@ public class GuiScreenPlus extends GuiContainer
         Keyboard.enableRepeatEvents(true);
     }
 
-
     @Override
     public void handleInput()
     {
-        while(Mouse.next())
+        while (Mouse.next())
         {
             this.handleMouseInput();
         }
 
-        while(Keyboard.next())
+        while (Keyboard.next())
         {
             this.handleKeyboardInput();
         }
@@ -79,7 +78,7 @@ public class GuiScreenPlus extends GuiContainer
         mouseEvent.x = Mouse.getEventX() * width / mc.displayWidth - this.screenX;
         mouseEvent.y = height - Mouse.getEventY() * height / mc.displayHeight - 1 - this.screenY;
 
-        if(oldX == -1)
+        if (oldX == -1)
         {
             oldX = mouseEvent.x;
             oldY = mouseEvent.y;
@@ -93,40 +92,45 @@ public class GuiScreenPlus extends GuiContainer
         mouseEvent.button = Mouse.getEventButton();
         mouseEvent.wheel = Mouse.getEventDWheel();
 
-        if(mouseEvent.wheel != 0)
+        if (mouseEvent.wheel != 0)
         {
-            if(mouseEvent.wheel < 0)
+            if (mouseEvent.wheel < 0)
             {
                 mouseEvent.wheel = -1;
-            } else
+            }
+            else
             {
                 mouseEvent.wheel = 1;
             }
 
             root.mouseWheel(mouseEvent);
-        } else if(mouseEvent.button >= 0 && mouseEvent.button < downButtons.length)
+        }
+        else if (mouseEvent.button >= 0 && mouseEvent.button < downButtons.length)
         {
-            if(downButtons[mouseEvent.button] != mouseEvent.down)
+            if (downButtons[mouseEvent.button] != mouseEvent.down)
             {
                 downButtons[mouseEvent.button] = mouseEvent.down;
 
-                if(mouseEvent.down)
+                if (mouseEvent.down)
                 {
                     root.mouseDown(mouseEvent);
-                } else
+                }
+                else
                 {
                     root.mouseUp(mouseEvent);
                 }
-            } else if(mouseEvent.dx != 0 || mouseEvent.dy != 0)
+            }
+            else if (mouseEvent.dx != 0 || mouseEvent.dy != 0)
             {
                 root.mouseMove(mouseEvent);
             }
-        } else if(mouseEvent.dx != 0 || mouseEvent.dy != 0)
+        }
+        else if (mouseEvent.dx != 0 || mouseEvent.dy != 0)
         {
             root.mouseMove(mouseEvent);
         }
 
-        if(!mouseEvent.handled)
+        if (!mouseEvent.handled)
         {
             super.handleMouseInput();
         }
@@ -139,22 +143,22 @@ public class GuiScreenPlus extends GuiContainer
     {
         keyboardEvent.handled = false;
 
-        if(Keyboard.getEventKeyState())
+        if (Keyboard.getEventKeyState())
         {
             keyboardEvent.key = Keyboard.getEventKey();
             keyboardEvent.character = Keyboard.getEventCharacter();
 
-            switch(keyboardEvent.key)
+            switch (keyboardEvent.key)
             {
-                case 1:
-                    break;
+            case 1:
+                break;
 
-                default:
-                    root.keyPressed(keyboardEvent);
+            default:
+                root.keyPressed(keyboardEvent);
             }
         }
 
-        if(!keyboardEvent.handled)
+        if (!keyboardEvent.handled)
         {
             super.handleKeyboardInput();
         }
@@ -218,26 +222,27 @@ public class GuiScreenPlus extends GuiContainer
 
     public void drawTiledRect(int rx, int ry, int rw, int rh, int u, int v, int tw, int th)
     {
-        if(rw == 0 || rh == 0 || tw == 0 || th == 0) return;
+        if (rw == 0 || rh == 0 || tw == 0 || th == 0)
+            return;
 
         float pixel = 0.00390625f;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
 
-        for(int y = 0; y < rh; y += th)
+        for (int y = 0; y < rh; y += th)
         {
-            for(int x = 0; x < rw; x += tw)
+            for (int x = 0; x < rw; x += tw)
             {
                 int qw = tw;
 
-                if(x + qw > rw)
+                if (x + qw > rw)
                 {
                     qw = rw - x;
                 }
 
                 int qh = th;
 
-                if(y + qh > rh)
+                if (y + qh > rh)
                 {
                     qh = rh - y;
                 }
@@ -268,6 +273,6 @@ public class GuiScreenPlus extends GuiContainer
     public void playSound(String sound, float volume, float pitch)
     {
         // TODO
-        //mc.getSoundHandler().playSoundFX(null, 1.0F, 1.0F);
+        // mc.getSoundHandler().playSoundFX(null, 1.0F, 1.0F);
     }
 }

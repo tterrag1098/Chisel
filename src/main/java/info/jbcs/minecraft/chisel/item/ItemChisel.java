@@ -5,13 +5,14 @@ import info.jbcs.minecraft.chisel.api.ChiselMode;
 import info.jbcs.minecraft.chisel.api.IChiselMode;
 import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.carving.Carving;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class ItemChisel extends ItemTool implements IChiselMode
 {
@@ -28,7 +29,7 @@ public class ItemChisel extends ItemTool implements IChiselMode
         setUnlocalizedName("chisel");
 
         toolSet.add("chisel");
-        //this.carving = c;
+        // this.carving = c;
     }
 
     @Override
@@ -54,7 +55,7 @@ public class ItemChisel extends ItemTool implements IChiselMode
     @Override
     public ChiselMode getChiselMode(ItemStack itemStack)
     {
-        //TODO
+        // TODO
         return ChiselMode.SINGLE;
     }
 }

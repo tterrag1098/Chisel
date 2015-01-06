@@ -25,11 +25,14 @@ public class Configurations
 
     public static boolean refreshConfig()
     {
-        concreteVelocity = config.get("general", "concreteVelocity", 0.45, "Traversing concrete roads, players will acceleration to this velocity. For reference, normal running speed is about 0.28. Set to 0 to disable acceleration.").getDouble(0.45);
+        concreteVelocity = config.get("general", "concreteVelocity", 0.45,
+                "Traversing concrete roads, players will acceleration to this velocity. For reference, normal running speed is about 0.28. Set to 0 to disable acceleration.")
+                .getDouble(0.45);
         particlesTickrate = config.get("client", "particleTickrate", 1, "Particle tick rate. Greater value = less particles.").getInt(1);
         oldPillars = config.get("client", "pillarOldGraphics", false, "Use old pillar textures").getBoolean(false);
         disableCTM = !config.get("client", "connectedTextures", true, "Enable connected textures").getBoolean(true);
-        blockDescriptions = config.get("client", "tooltipsUseBlockDescriptions", true, "Make variations of blocks have the same name, and use the description in tooltip to distinguish them.").getBoolean(true);
+        blockDescriptions = config.get("client", "tooltipsUseBlockDescriptions", true,
+                "Make variations of blocks have the same name, and use the description in tooltip to distinguish them.").getBoolean(true);
         chiselStoneToCobbleBricks = config.get("general", "chiselStoneToCobbleBricks", true, "Chisel stone to cobblestone and bricks by left-click.").getBoolean(true);
         enableChiseling = config.get("general", "enableChiselingLeftClicking", false, "Change blocks to another block using the Chisel and left-click.").getBoolean(false);
         ghostCloud = config.get("general", "doesCloudRenderLikeGhost", true).getBoolean(true);
@@ -39,7 +42,7 @@ public class Configurations
         limestoneAmount = config.get("worldgen", "limestoneAmount", 8, "Amount of limestone to generate in the world; use 0 for none").getInt(8);
         chiselRecipe = config.get("general", "chiselAlternateRecipe", false, "Use alternative crafting recipe for the chisel").getBoolean(false);
 
-        if(config.hasChanged())
+        if (config.hasChanged())
         {
             config.save();
         }

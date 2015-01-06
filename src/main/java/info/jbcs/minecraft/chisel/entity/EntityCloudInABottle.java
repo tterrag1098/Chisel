@@ -1,6 +1,5 @@
 package info.jbcs.minecraft.chisel.entity;
 
-import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.chisel.ChiselBlocks;
 
 import java.util.Random;
@@ -32,33 +31,33 @@ public class EntityCloudInABottle extends EntityThrowable
     @Override
     protected void onImpact(MovingObjectPosition movingobjectposition)
     {
-        if(worldObj.isRemote)
+        if (worldObj.isRemote)
             return;
 
         int x = movingobjectposition.blockX;
         int y = movingobjectposition.blockY;
         int z = movingobjectposition.blockZ;
 
-        switch(movingobjectposition.sideHit)
+        switch (movingobjectposition.sideHit)
         {
-            case 0:
-                y--;
-                break;
-            case 1:
-                y++;
-                break;
-            case 2:
-                z--;
-                break;
-            case 3:
-                z++;
-                break;
-            case 4:
-                x--;
-                break;
-            case 5:
-                x++;
-                break;
+        case 0:
+            y--;
+            break;
+        case 1:
+            y++;
+            break;
+        case 2:
+            z--;
+            break;
+        case 3:
+            z++;
+            break;
+        case 4:
+            x--;
+            break;
+        case 5:
+            x++;
+            break;
         }
 
         generate(worldObj, rand, x, y, z, 40);
@@ -73,24 +72,24 @@ public class EntityCloudInABottle extends EntityThrowable
         int Y[] = new int[9];
         int Z[] = new int[9];
 
-        for(int dir = 0; dir < 9; dir++)
+        for (int dir = 0; dir < 9; dir++)
         {
             X[dir] = gx;
             Y[dir] = gy;
             Z[dir] = gz;
         }
         int count = 0;
-        while(count < numberOfBlocks)
+        while (count < numberOfBlocks)
         {
-            for(int dir = 0; dir < 9; dir++)
+            for (int dir = 0; dir < 9; dir++)
             {
-                if(count >= numberOfBlocks)
+                if (count >= numberOfBlocks)
                     break;
 
                 int dx = dir % 3 - 1;
                 int dz = dir / 3 - 1;
 
-                if(dx == 0 && dz == 0)
+                if (dx == 0 && dz == 0)
                     continue;
 
                 X[dir] += random.nextInt(3) - 1 + dx;
@@ -101,13 +100,13 @@ public class EntityCloudInABottle extends EntityThrowable
                 int y = Y[dir];
                 int z = Z[dir];
 
-                for(int j2 = x; j2 < x + random.nextInt(4) + 1; j2++)
+                for (int j2 = x; j2 < x + random.nextInt(4) + 1; j2++)
                 {
-                    for(int k2 = y; k2 < y + random.nextInt(1) + 2; k2++)
+                    for (int k2 = y; k2 < y + random.nextInt(1) + 2; k2++)
                     {
-                        for(int l2 = z; l2 < z + random.nextInt(4) + 1; l2++)
+                        for (int l2 = z; l2 < z + random.nextInt(4) + 1; l2++)
                         {
-                            if(world.getBlock(j2, k2, l2).isAir(world, j2, k2, l2) && Math.abs(j2 - x) + Math.abs(k2 - y) + Math.abs(l2 - z) < 4 * 1 + random.nextInt(2))
+                            if (world.getBlock(j2, k2, l2).isAir(world, j2, k2, l2) && Math.abs(j2 - x) + Math.abs(k2 - y) + Math.abs(l2 - z) < 4 * 1 + random.nextInt(2))
                             {
                                 world.setBlock(j2, k2, l2, ChiselBlocks.blockCloud);
                                 count++;
@@ -118,7 +117,7 @@ public class EntityCloudInABottle extends EntityThrowable
             }
         }
 
-        //System.out.println("Created " + count + " cloud blocks.");
+        // System.out.println("Created " + count + " cloud blocks.");
 
         return true;
     }

@@ -1,7 +1,7 @@
 package info.jbcs.minecraft.chisel.client.render;
 
-import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.block.BlockMarblePillar;
+import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.utilities.Drawing;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -24,7 +24,7 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
     @Override
     public void renderInventoryBlock(Block blck, int metadata, int modelID, RenderBlocks renderer)
     {
-        if(!(blck instanceof BlockMarblePillar))
+        if (!(blck instanceof BlockMarblePillar))
             return;
 
         BlockMarblePillar block = (BlockMarblePillar) blck;
@@ -44,14 +44,14 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block blck, int modelId, RenderBlocks renderer)
     {
-        if(!(blck instanceof BlockMarblePillar))
+        if (!(blck instanceof BlockMarblePillar))
             return false;
 
         BlockMarblePillar block = (BlockMarblePillar) blck;
 
         int metadata = world.getBlockMetadata(x, y, z);
 
-        if(block.carverHelper.variations.get(metadata).kind != CarvableHelper.CTMV)
+        if (block.carverHelper.variations.get(metadata).kind != CarvableHelper.CTMV)
         {
             block.sides[0] = block.carverHelper.getIcon(0, metadata);
             block.sides[1] = block.carverHelper.getIcon(1, metadata);
@@ -66,30 +66,31 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
         boolean yp = connected(world, x, y + 1, z, block, metadata);
         boolean yn = connected(world, x, y - 1, z, block, metadata);
 
-        if(yp || yn)
+        if (yp || yn)
         {
             block.sides[0] = block.getCtmIcon(4, metadata);
             block.sides[1] = block.getCtmIcon(4, metadata);
 
-            if(yp && yn)
+            if (yp && yn)
                 block.sides[2] = block.getCtmIcon(2, metadata);
-            else if(yp)
+            else if (yp)
                 block.sides[2] = block.getCtmIcon(3, metadata);
             else
                 block.sides[2] = block.getCtmIcon(1, metadata);
 
             block.sides[3] = block.sides[4] = block.sides[5] = block.sides[2];
-        } else
+        }
+        else
         {
             boolean xp = connected(world, x + 1, y, z, block, metadata);
             boolean xn = connected(world, x - 1, y, z, block, metadata);
 
-            if(xp && (connected(world, x + 1, y + 1, z, block, metadata) || connected(world, x + 1, y - 1, z, block, metadata)))
+            if (xp && (connected(world, x + 1, y + 1, z, block, metadata) || connected(world, x + 1, y - 1, z, block, metadata)))
                 xp = false;
-            if(xn && (connected(world, x - 1, y + 1, z, block, metadata) || connected(world, x - 1, y - 1, z, block, metadata)))
+            if (xn && (connected(world, x - 1, y + 1, z, block, metadata) || connected(world, x - 1, y - 1, z, block, metadata)))
                 xn = false;
 
-            if(xp || xn)
+            if (xp || xn)
             {
                 renderer.uvRotateEast = 2;
                 renderer.uvRotateWest = 1;
@@ -99,29 +100,30 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
                 block.sides[4] = block.getCtmIcon(4, metadata);
                 block.sides[5] = block.getCtmIcon(4, metadata);
 
-                if(xp && xn)
+                if (xp && xn)
                     block.sides[0] = block.getCtmIcon(2, metadata);
-                else if(xp)
+                else if (xp)
                     block.sides[0] = block.getCtmIcon(3, metadata);
                 else
                     block.sides[0] = block.getCtmIcon(1, metadata);
 
                 block.sides[1] = block.sides[2] = block.sides[3] = block.sides[0];
-            } else
+            }
+            else
             {
                 boolean zp = connected(world, x, y, z + 1, block, metadata);
                 boolean zn = connected(world, x, y, z - 1, block, metadata);
 
-                if(zp && (connected(world, x, y + 1, z + 1, block, metadata) || connected(world, x, y - 1, z + 1, block, metadata)))
+                if (zp && (connected(world, x, y + 1, z + 1, block, metadata) || connected(world, x, y - 1, z + 1, block, metadata)))
                     zp = false;
-                if(zp && (connected(world, x + 1, y, z + 1, block, metadata) || connected(world, x - 1, y, z + 1, block, metadata)))
+                if (zp && (connected(world, x + 1, y, z + 1, block, metadata) || connected(world, x - 1, y, z + 1, block, metadata)))
                     zp = false;
-                if(zn && (connected(world, x, y + 1, z - 1, block, metadata) || connected(world, x, y - 1, z - 1, block, metadata)))
+                if (zn && (connected(world, x, y + 1, z - 1, block, metadata) || connected(world, x, y - 1, z - 1, block, metadata)))
                     zn = false;
-                if(zn && (connected(world, x + 1, y, z - 1, block, metadata) || connected(world, x - 1, y, z - 1, block, metadata)))
+                if (zn && (connected(world, x + 1, y, z - 1, block, metadata) || connected(world, x - 1, y, z - 1, block, metadata)))
                     zn = false;
 
-                if(zp || zn)
+                if (zp || zn)
                 {
                     renderer.uvRotateSouth = 1;
                     renderer.uvRotateNorth = 2;
@@ -129,22 +131,22 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
                     block.sides[2] = block.getCtmIcon(4, metadata);
                     block.sides[3] = block.getCtmIcon(4, metadata);
 
-                    if(zp && zn)
+                    if (zp && zn)
                         block.sides[0] = block.getCtmIcon(2, metadata);
-                    else if(zp)
+                    else if (zp)
                         block.sides[0] = block.getCtmIcon(1, metadata);
                     else
                         block.sides[0] = block.getCtmIcon(3, metadata);
 
                     block.sides[1] = block.sides[4] = block.sides[5] = block.sides[0];
-                } else
+                }
+                else
                 {
                     block.sides[0] = block.sides[1] = block.getCtmIcon(4, metadata);
                     block.sides[2] = block.sides[3] = block.sides[4] = block.sides[5] = block.getCtmIcon(0, metadata);
                 }
             }
         }
-
 
         boolean flag = renderer.renderStandardBlock(block, x, y, z);
 
@@ -169,6 +171,5 @@ public class BlockMarblePillarRenderer implements ISimpleBlockRenderingHandler
     {
         return id;
     }
-
 
 }

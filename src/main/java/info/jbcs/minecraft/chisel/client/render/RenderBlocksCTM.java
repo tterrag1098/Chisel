@@ -120,7 +120,7 @@ public class RenderBlocksCTM extends RenderBlocks
 
     void vert(int index)
     {
-        if(enableAO)
+        if (enableAO)
         {
             tessellator.setColorOpaque_F(R[index], G[index], B[index]);
             tessellator.setBrightness(L[index]);
@@ -132,7 +132,7 @@ public class RenderBlocksCTM extends RenderBlocks
     @Override
     public void renderFaceXNeg(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -140,7 +140,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(0.0, 0.0, 0.0, i.getMinU(), i.getMaxV());
             tessellator.addVertexWithUV(0.0, 0.0, 1.0, i.getMaxU(), i.getMaxV());
             tessellator.addVertexWithUV(0.0, 1.0, 1.0, i.getMaxU(), i.getMinV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 4);
 
@@ -155,7 +156,7 @@ public class RenderBlocksCTM extends RenderBlocks
     @Override
     public void renderFaceXPos(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -163,7 +164,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(1.0, 0.0, 1.0, i.getMaxU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 0.0, 0.0, i.getMinU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 1.0, 0.0, i.getMinU(), i.getMinV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 5);
 
@@ -178,7 +180,7 @@ public class RenderBlocksCTM extends RenderBlocks
     @Override
     public void renderFaceZNeg(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -186,7 +188,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(1.0, 0.0, 0.0, i.getMaxU(), i.getMaxV());
             tessellator.addVertexWithUV(0.0, 0.0, 0.0, i.getMinU(), i.getMaxV());
             tessellator.addVertexWithUV(0.0, 1.0, 0.0, i.getMinU(), i.getMinV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 2);
 
@@ -198,11 +201,10 @@ public class RenderBlocksCTM extends RenderBlocks
         }
     }
 
-
     @Override
     public void renderFaceZPos(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -210,7 +212,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(0.0, 0.0, 1.0, i.getMinU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 0.0, 1.0, i.getMaxU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 1.0, 1.0, i.getMaxU(), i.getMinV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 3);
 
@@ -225,7 +228,7 @@ public class RenderBlocksCTM extends RenderBlocks
     @Override
     public void renderFaceYNeg(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -233,7 +236,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(0.0, 0.0, 0.0, i.getMinU(), i.getMinV());
             tessellator.addVertexWithUV(1.0, 0.0, 0.0, i.getMaxU(), i.getMinV());
             tessellator.addVertexWithUV(1.0, 0.0, 1.0, i.getMaxU(), i.getMaxV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 0);
 
@@ -248,7 +252,7 @@ public class RenderBlocksCTM extends RenderBlocks
     @Override
     public void renderFaceYPos(Block block, double x, double y, double z, IIcon icon)
     {
-        if(rendererOld != null && rendererOld.hasOverrideBlockTexture())
+        if (rendererOld != null && rendererOld.hasOverrideBlockTexture())
         {
             IIcon i = rendererOld.overrideBlockTexture;
 
@@ -256,7 +260,8 @@ public class RenderBlocksCTM extends RenderBlocks
             tessellator.addVertexWithUV(0.0, 1.0, 1.0, i.getMinU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 1.0, 1.0, i.getMaxU(), i.getMaxV());
             tessellator.addVertexWithUV(1.0, 1.0, 0.0, i.getMaxU(), i.getMinV());
-        } else
+        }
+        else
         {
             int tex[] = CTM.getSubmapIndices(blockAccess, bx, by, bz, 1);
 

@@ -97,7 +97,7 @@ public class EntityBallOMossFX extends EntityFX
         speed = 0.4 + 0.4 * General.rand.nextDouble();
 
         particleMaxAge = (int) (General.rand.nextDouble() * 10.0) + 5;
-        if(General.rand.nextInt(10) == 0)
+        if (General.rand.nextInt(10) == 0)
             particleMaxAge += General.rand.nextDouble() * 40.0;
 
         motionX = (General.rand.nextDouble() - 0.5) * 0.7;
@@ -105,7 +105,7 @@ public class EntityBallOMossFX extends EntityFX
         motionZ = (General.rand.nextDouble() - 0.5) * 0.7;
         particleGravity = 2.0f;
 
-//		setParticleIcon(block.particles[General.rand.nextInt(block.particles.length)]);
+        // setParticleIcon(block.particles[General.rand.nextInt(block.particles.length)]);
 
         icon = Chisel.itemBallOMoss.getIconFromDamage(0);
         float width = 4.0f + General.rand.nextFloat() * 8.0f;
@@ -141,10 +141,11 @@ public class EntityBallOMossFX extends EntityFX
 
         double remaining = particleMaxAge - particleAge;
 
-        if(remaining < 5)
+        if (remaining < 5)
         {
             particleAlpha = (float) (remaining / 5.0);
-        } else
+        }
+        else
         {
             particleAlpha = 1.0f;
         }

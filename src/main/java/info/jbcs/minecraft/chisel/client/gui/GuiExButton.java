@@ -40,8 +40,7 @@ public class GuiExButton extends GuiElement
     }
 
     public void onClick()
-    {
-    }
+    {}
 
     @Override
     public void render()
@@ -49,11 +48,12 @@ public class GuiExButton extends GuiElement
         int color = 0xffe0e0e0;
         TexturedBox box = boxDisabled;
 
-        if(!disabled && !over)
+        if (!disabled && !over)
         {
             box = boxNormal;
             color = 0xffffffff;
-        } else if(!disabled && over)
+        }
+        else if (!disabled && over)
         {
             box = boxOver;
             color = 0xffffff70;
@@ -72,7 +72,7 @@ public class GuiExButton extends GuiElement
     @Override
     public void mouseDown(InputMouseEvent ev)
     {
-        if(!isMouseOver(ev))
+        if (!isMouseOver(ev))
         {
             return;
         }

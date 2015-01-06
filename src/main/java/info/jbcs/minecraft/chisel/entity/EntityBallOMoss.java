@@ -36,35 +36,35 @@ public class EntityBallOMoss extends EntityThrowable
         int y = movingobjectposition.blockY;
         int z = movingobjectposition.blockZ;
 
-        switch(movingobjectposition.sideHit)
+        switch (movingobjectposition.sideHit)
         {
-            case 0:
-                y--;
-                break;
-            case 1:
-                y++;
-                break;
-            case 2:
-                z--;
-                break;
-            case 3:
-                z++;
-                break;
-            case 4:
-                x--;
-                break;
-            case 5:
-                x++;
-                break;
+        case 0:
+            y--;
+            break;
+        case 1:
+            y++;
+            break;
+        case 2:
+            z--;
+            break;
+        case 3:
+            z++;
+            break;
+        case 4:
+            x--;
+            break;
+        case 5:
+            x++;
+            break;
         }
 
         setDead();
 
-        if(worldObj.isRemote)
+        if (worldObj.isRemote)
         {
-            worldObj.playSound(x, y, z, Chisel.MOD_ID+":random.squash", 1.0f, 1.0f, false);
+            worldObj.playSound(x, y, z, Chisel.MOD_ID + ":random.squash", 1.0f, 1.0f, false);
 
-            for(int i = 0; i < 32; i++)
+            for (int i = 0; i < 32; i++)
                 GeneralChiselClient.spawnBallOMossFX(worldObj, posX, posY, posZ);
 
             return;
@@ -73,25 +73,24 @@ public class EntityBallOMoss extends EntityThrowable
         int radius = 5;
         int falloff = 3;
 
-        for(int xx = -radius; xx < radius; xx++)
+        for (int xx = -radius; xx < radius; xx++)
         {
-            for(int yy = -radius; yy < radius; yy++)
+            for (int yy = -radius; yy < radius; yy++)
             {
-                for(int zz = -radius; zz < radius; zz++)
+                for (int zz = -radius; zz < radius; zz++)
                 {
                     double dist = (xx < 0 ? -xx : xx) + (yy < 0 ? -yy : yy) + (zz < 0 ? -zz : zz);
 
-                    if(!(dist < falloff || General.rand.nextInt(radius * 3 - falloff) >= dist * 2))
+                    if (!(dist < falloff || General.rand.nextInt(radius * 3 - falloff) >= dist * 2))
                         continue;
 
-                    if(!worldObj.isRemote)
+                    if (!worldObj.isRemote)
                         turnToMoss(worldObj, x + xx, y + yy, z + zz);
                 }
             }
         }
 
     }
-
 
     public static void turnToMoss(World world, int x, int y, int z)
     {
@@ -100,24 +99,28 @@ public class EntityBallOMoss extends EntityThrowable
         Block resBlock = block;
         int resMeta = meta;
 
-        if(block.equals(Blocks.cobblestone))
+        if (block.equals(Blocks.cobblestone))
         {
             resBlock = Blocks.mossy_cobblestone;
-        } else if(block.equals(Blocks.cobblestone_wall) && meta == 0)
+        }
+        else if (block.equals(Blocks.cobblestone_wall) && meta == 0)
         {
             resMeta = 1;
-        } else if(block.equals(ChiselBlocks.blockCobblestone))
+        }
+        else if (block.equals(ChiselBlocks.blockCobblestone))
         {
             resBlock = ChiselBlocks.blockCobblestoneMossy;
-        } else if(block.equals(ChiselBlocks.blockTemple))
+        }
+        else if (block.equals(ChiselBlocks.blockTemple))
         {
             resBlock = ChiselBlocks.blockTempleMossy;
-        } else if(block.equals(Blocks.stonebrick))
+        }
+        else if (block.equals(Blocks.stonebrick))
         {
             resMeta = 1;
         }
 
-        if(resBlock.equals(block) && resMeta == meta)
+        if (resBlock.equals(block) && resMeta == meta)
             return;
         world.setBlock(x, y, z, resBlock, resMeta, 3);
     }

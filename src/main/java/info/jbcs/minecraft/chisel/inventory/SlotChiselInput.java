@@ -16,7 +16,8 @@ public class SlotChiselInput extends Slot
     @Override
     public boolean isItemValid(ItemStack itemstack)
     {
-        if(container.finished) return false;
+        if (container.finished)
+            return false;
 
         return super.isItemValid(itemstack);
     }
@@ -31,7 +32,8 @@ public class SlotChiselInput extends Slot
     @Override
     public void onSlotChanged()
     {
-        if(container.finished) return;
+        if (container.finished)
+            return;
 
         super.onSlotChanged();
         selInventory.updateItems();

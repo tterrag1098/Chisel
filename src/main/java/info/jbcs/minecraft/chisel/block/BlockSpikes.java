@@ -1,7 +1,5 @@
 package info.jbcs.minecraft.chisel.block;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 import info.jbcs.minecraft.chisel.Configurations;
 import info.jbcs.minecraft.chisel.client.GeneralChiselClient;
 import info.jbcs.minecraft.chisel.client.render.BlockSpikesRenderer;
@@ -14,6 +12,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 
 public class BlockSpikes extends Block
 {
@@ -37,7 +37,7 @@ public class BlockSpikes extends Block
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
-        if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
             return;
 
         double dy = entity.posY - entity.prevPosY;
@@ -50,7 +50,6 @@ public class BlockSpikes extends Block
     {
         return false;
     }
-
 
     @Override
     public boolean renderAsNormalBlock()

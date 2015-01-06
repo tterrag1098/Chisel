@@ -38,7 +38,7 @@ public abstract class GuiHandler implements Comparable
         Collections.sort(items);
         int index = 0;
 
-        for(GuiHandler h : items)
+        for (GuiHandler h : items)
         {
             h.mod = mod;
             h.index = index++;
@@ -49,7 +49,7 @@ public abstract class GuiHandler implements Comparable
             @Override
             public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
             {
-                if(id < 0 || id >= items.size())
+                if (id < 0 || id >= items.size())
                 {
                     return null;
                 }
@@ -60,7 +60,7 @@ public abstract class GuiHandler implements Comparable
             @Override
             public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
             {
-                if(id < 0 || id >= items.size())
+                if (id < 0 || id >= items.size())
                 {
                     return null;
                 }

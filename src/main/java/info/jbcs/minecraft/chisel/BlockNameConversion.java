@@ -4,10 +4,10 @@ import info.jbcs.minecraft.utilities.General;
 
 import java.util.HashMap;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockNameConversion
 {
@@ -21,34 +21,36 @@ public class BlockNameConversion
         {
             oldname = General.cleanTags(oldname);
             String newname = null;
-            switch (step) {
-                case 0: // lookup list
-                    return namingConversion.get(oldname);
-                case 1: // simple lower case
-                    return oldname.toLowerCase();
-                case 2: // rename "marbleSlab" -> "marble_slab", "blockRedstone" -> "redstone_block"
-                    newname = oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase();
-                    if (newname.startsWith("block_"))
-                    {
-                        newname = newname.replaceFirst("block_([a-z_]+)", "$1_block");
-                    }
-                    else if (newname.startsWith("snakestone_"))
-                    {
-                        newname = newname.replaceFirst("snakestone_([a-z_]+)", "$1_snakestone");
-                    }
-                    return newname;
-                case 3: // rename "wood-dark-oak" -> "dark_oak_planks"
-                    newname = oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase().replace('-', '_');
-                    if (newname.contains("wood_"))
-                    {
-                        newname = newname.replaceFirst("wood_([a-z_]+)", "$1_planks");
-                    }
-                    return newname;
-                case (MAX - 1): // ALWAYS last: rename "blockYxx" -> "yxx" (e.g. "blockDirt" -> "dirt").
-                                // This can be dangerous in cases like "blockCarpet" (a block) -> "carpet" (NO block)
-                    return oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase().replaceFirst("block_", "");
-                default:
-                    throw new IndexOutOfBoundsException("conversion got invalid parameter step=" + step);
+            switch (step)
+            {
+            case 0: // lookup list
+                return namingConversion.get(oldname);
+            case 1: // simple lower case
+                return oldname.toLowerCase();
+            case 2: // rename "marbleSlab" -> "marble_slab", "blockRedstone" -> "redstone_block"
+                newname = oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase();
+                if (newname.startsWith("block_"))
+                {
+                    newname = newname.replaceFirst("block_([a-z_]+)", "$1_block");
+                }
+                else if (newname.startsWith("snakestone_"))
+                {
+                    newname = newname.replaceFirst("snakestone_([a-z_]+)", "$1_snakestone");
+                }
+                return newname;
+            case 3: // rename "wood-dark-oak" -> "dark_oak_planks"
+                newname = oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase().replace('-', '_');
+                if (newname.contains("wood_"))
+                {
+                    newname = newname.replaceFirst("wood_([a-z_]+)", "$1_planks");
+                }
+                return newname;
+            case (MAX - 1): // ALWAYS last: rename "blockYxx" -> "yxx" (e.g. "blockDirt" -> "dirt").
+                            // This can be dangerous in cases like "blockCarpet" (a block) ->
+                            // "carpet" (NO block)
+                return oldname.replaceAll("([a-z]+)([A-Z])", "$1_$2").toLowerCase().replaceFirst("block_", "");
+            default:
+                throw new IndexOutOfBoundsException("conversion got invalid parameter step=" + step);
             }
         }
     }

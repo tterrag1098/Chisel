@@ -2,7 +2,6 @@ package info.jbcs.minecraft.chisel.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -20,12 +19,11 @@ public class BlockMarbleBookshelf extends BlockCarvable
         super();
     }
 
-
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        if(side < 2)
+        if (side < 2)
             return Blocks.planks.getBlockTextureFromSide(side);
         return super.getIcon(side, metadata);
     }
@@ -33,7 +31,7 @@ public class BlockMarbleBookshelf extends BlockCarvable
     @Override
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
     {
-        if(side < 2)
+        if (side < 2)
             return Blocks.planks.getBlockTextureFromSide(side);
         return super.getIcon(world, x, y, z, side);
     }

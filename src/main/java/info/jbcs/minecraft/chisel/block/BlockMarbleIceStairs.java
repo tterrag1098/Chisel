@@ -1,7 +1,7 @@
 package info.jbcs.minecraft.chisel.block;
 
-import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.ChiselBlocks;
+import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 
 import java.util.Random;
 

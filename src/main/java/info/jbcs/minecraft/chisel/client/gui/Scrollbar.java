@@ -34,17 +34,17 @@ public abstract class Scrollbar extends GuiButton
     @Override
     public boolean mousePressed(Minecraft mc, int x, int y)
     {
-        if(x < xPosition || x >= xPosition + width)
+        if (x < xPosition || x >= xPosition + width)
         {
             return false;
         }
 
-        if(y < yPosition || y >= yPosition + height)
+        if (y < yPosition || y >= yPosition + height)
         {
             return false;
         }
 
-        if(active)
+        if (active)
         {
             dragged = true;
         }
@@ -58,23 +58,23 @@ public abstract class Scrollbar extends GuiButton
     @Override
     public void drawButton(Minecraft mc, int x, int y)
     {
-        if(dragged)
+        if (dragged)
         {
             float initialOffset = offset;
             int off = y - yPosition - elementHeight / 2;
             offset = 1.0f * off / (height - elementHeight);
 
-            if(offset < 0)
+            if (offset < 0)
             {
                 offset = 0;
             }
 
-            if(offset > 1)
+            if (offset > 1)
             {
                 offset = 1;
             }
 
-            if(initialOffset != offset)
+            if (initialOffset != offset)
             {
                 onScrolled(offset);
             }
@@ -87,12 +87,12 @@ public abstract class Scrollbar extends GuiButton
 
     public void handleMouseInput()
     {
-        if(Mouse.getEventButton() == 0 && !Mouse.getEventButtonState())
+        if (Mouse.getEventButton() == 0 && !Mouse.getEventButtonState())
         {
             dragged = false;
         }
 
-        if(!active)
+        if (!active)
         {
             return;
         }
@@ -100,22 +100,22 @@ public abstract class Scrollbar extends GuiButton
         float initialOffset = offset;
         int direction = Mouse.getEventDWheel();
 
-        if(direction != 0)
+        if (direction != 0)
         {
             offset += direction > 0 ? -step : step;
         }
 
-        if(offset < 0)
+        if (offset < 0)
         {
             offset = 0;
         }
 
-        if(offset > 1)
+        if (offset > 1)
         {
             offset = 1;
         }
 
-        if(initialOffset != offset)
+        if (initialOffset != offset)
         {
             onScrolled(offset);
         }

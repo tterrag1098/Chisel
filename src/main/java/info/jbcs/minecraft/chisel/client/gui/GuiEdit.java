@@ -21,10 +21,11 @@ public class GuiEdit extends GuiElement
 
     public String getText()
     {
-        if(field == null)
+        if (field == null)
         {
             return tempString;
-        } else
+        }
+        else
         {
             return field.getText();
         }
@@ -32,10 +33,11 @@ public class GuiEdit extends GuiElement
 
     public void setText(String text)
     {
-        if(field == null)
+        if (field == null)
         {
             tempString = text;
-        } else
+        }
+        else
         {
             field.setText(text);
         }
@@ -52,7 +54,7 @@ public class GuiEdit extends GuiElement
     {
         field.mouseClicked(ev.x, ev.y, ev.button);
 
-        if(isMouseOver(ev))
+        if (isMouseOver(ev))
         {
             ev.handled = true;
         }
@@ -63,7 +65,7 @@ public class GuiEdit extends GuiElement
     {
         field.textboxKeyTyped(ev.character, ev.key);
 
-        if(field.isFocused())
+        if (field.isFocused())
         {
             ev.handled = true;
         }

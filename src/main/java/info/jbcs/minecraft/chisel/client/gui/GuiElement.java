@@ -25,12 +25,12 @@ public class GuiElement
 
     public GuiElement addChild(GuiElement e)
     {
-        if(children == null)
+        if (children == null)
         {
             children = new ArrayList<GuiElement>();
         }
 
-        if(e.parent != null)
+        if (e.parent != null)
         {
             e.parent.removeChild(e);
         }
@@ -45,7 +45,7 @@ public class GuiElement
 
     public GuiElement removeChild(GuiElement e)
     {
-        if(children == null)
+        if (children == null)
         {
             return e;
         }
@@ -60,14 +60,14 @@ public class GuiElement
 
     public void onAdded()
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
-            if(e.parent != e.addedParent)
+            if (e.parent != e.addedParent)
             {
                 e.onAdded();
             }
@@ -83,16 +83,16 @@ public class GuiElement
 
     public void mouseDown(InputMouseEvent ev)
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             e.mouseDown(ev);
 
-            if(ev.handled)
+            if (ev.handled)
             {
                 return;
             }
@@ -101,16 +101,16 @@ public class GuiElement
 
     public void mouseUp(InputMouseEvent ev)
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             e.mouseUp(ev);
 
-            if(ev.handled)
+            if (ev.handled)
             {
                 return;
             }
@@ -119,16 +119,16 @@ public class GuiElement
 
     public void mouseMove(InputMouseEvent ev)
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             e.mouseMove(ev);
 
-            if(ev.handled)
+            if (ev.handled)
             {
                 return;
             }
@@ -137,16 +137,16 @@ public class GuiElement
 
     public void mouseWheel(InputMouseEvent ev)
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             e.mouseWheel(ev);
 
-            if(ev.handled)
+            if (ev.handled)
             {
                 return;
             }
@@ -155,12 +155,12 @@ public class GuiElement
 
     public void render()
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             e.render();
@@ -169,16 +169,16 @@ public class GuiElement
 
     public void keyPressed(InputKeyboardEvent ev)
     {
-        if(children == null)
+        if (children == null)
         {
             return;
         }
 
-        for(GuiElement e : children)
+        for (GuiElement e : children)
         {
             e.keyPressed(ev);
 
-            if(ev.handled)
+            if (ev.handled)
             {
                 return;
             }

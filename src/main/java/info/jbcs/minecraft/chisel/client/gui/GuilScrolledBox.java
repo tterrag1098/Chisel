@@ -35,17 +35,15 @@ public class GuilScrolledBox extends GuiElement
         tessellator.draw();
     }
 
-
     @Override
     public GuiElement addChild(GuiElement e)
     {
         int childBottom = e.y + e.h - 18;
-        if(childBottom > contentHeight)
+        if (childBottom > contentHeight)
             contentHeight = childBottom;
 
         return super.addChild(e);
     }
-
 
     @Override
     public void render()
@@ -82,11 +80,13 @@ public class GuilScrolledBox extends GuiElement
     @Override
     public void mouseMove(InputMouseEvent ev)
     {
-        if(scrollingStart != -1)
+        if (scrollingStart != -1)
         {
             offset = ev.y - scrollingStart;
-            if(offset > contentHeight) offset = contentHeight;
-            if(offset < -contentHeight) offset = -contentHeight;
+            if (offset > contentHeight)
+                offset = contentHeight;
+            if (offset < -contentHeight)
+                offset = -contentHeight;
         }
 
         ev.y -= offset;
@@ -99,7 +99,7 @@ public class GuilScrolledBox extends GuiElement
     {
         scrollingStart = ev.y - offset;
 
-        if(ev.y >= y && ev.y < y + h)
+        if (ev.y >= y && ev.y < y + h)
         {
             ev.y -= offset;
             super.mouseDown(ev);
@@ -112,7 +112,7 @@ public class GuilScrolledBox extends GuiElement
     {
         scrollingStart = -1;
 
-        if(ev.y >= y && ev.y < y + h)
+        if (ev.y >= y && ev.y < y + h)
         {
             ev.y -= offset;
             super.mouseUp(ev);
@@ -120,5 +120,3 @@ public class GuilScrolledBox extends GuiElement
         }
     }
 }
-
-

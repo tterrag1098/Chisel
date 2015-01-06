@@ -181,7 +181,6 @@ public class BlockMarblePaneRenderer implements ISimpleBlockRenderingHandler
             tessellator.addVertexWithUV(x0 + xoff1, y0 + y, zp0, i1u0, i1v0 + i1v * v1);
         }
 
-
         public void renderHorizontalNS(double zoff, double v0, double v1)
         {
             tessellator.addVertexWithUV(xp0, y1, z0 + zoff, i2u0, i2v0 + i2v * v1);
@@ -225,7 +224,7 @@ public class BlockMarblePaneRenderer implements ISimpleBlockRenderingHandler
         float f2 = (i1 >> 8 & 255) / 255.0F;
         float f3 = (i1 & 255) / 255.0F;
 
-        if(EntityRenderer.anaglyphEnable)
+        if (EntityRenderer.anaglyphEnable)
         {
             float f4 = (f1 * 30.0F + f2 * 59.0F + f3 * 11.0F) / 100.0F;
             float f5 = (f1 * 30.0F + f2 * 70.0F) / 100.0F;
@@ -240,7 +239,8 @@ public class BlockMarblePaneRenderer implements ISimpleBlockRenderingHandler
         IIcon iconPane = block.getIcon(2, meta);
         IIcon iconTop = block.getIcon(1, meta);
         IIcon iconSide = block.getIcon(0, meta);
-        if(iconPane == null || iconTop == null || iconSide == null) return false;
+        if (iconPane == null || iconTop == null || iconSide == null)
+            return false;
 
         paneRenderer.set(x, y, z, iconPane, iconTop, iconSide);
 
@@ -264,57 +264,61 @@ public class BlockMarblePaneRenderer implements ISimpleBlockRenderingHandler
         boolean isolatedTop = !connectsTopNorth && !connectsTopSouth && !connectsTopWest && !connectsTopEast;
         boolean isolatedBottom = !connectsBottomNorth && !connectsBottomSouth && !connectsBottomWest && !connectsBottomEast;
 
-        if(!connectsNorth && !connectsSouth && !connectsWest && !connectsEast)
+        if (!connectsNorth && !connectsSouth && !connectsWest && !connectsEast)
         {
             connectsNorth = connectsSouth = connectsWest = connectsEast = true;
         }
 
         int connections = 0;
-        if(connectsNorth)
+        if (connectsNorth)
         {
             paneRenderer.renderNorthPane();
-            if(!connectsBottom || !connectsBottomNorth && !isolatedBottom)
+            if (!connectsBottom || !connectsBottomNorth && !isolatedBottom)
                 paneRenderer.renderVerticalNS(-0.0003, 0.0, 0.5, 0.5, 0.0);
-            if(!connectsTop || !connectsTopNorth && !isolatedTop)
+            if (!connectsTop || !connectsTopNorth && !isolatedTop)
                 paneRenderer.renderVerticalNS(+1.0003, 0.0, 0.5, 0.5, 0.0);
             connections++;
         }
-        if(connectsSouth)
+        if (connectsSouth)
         {
             paneRenderer.renderSouthPane();
-            if(!connectsBottom || !connectsBottomSouth && !isolatedBottom)
+            if (!connectsBottom || !connectsBottomSouth && !isolatedBottom)
                 paneRenderer.renderVerticalNS(-0.0004, 0.5, 1.0, 1.0, 0.5);
-            if(!connectsTop || !connectsTopSouth && !isolatedTop)
+            if (!connectsTop || !connectsTopSouth && !isolatedTop)
                 paneRenderer.renderVerticalNS(+1.0004, 0.5, 1.0, 1.0, 0.5);
             connections++;
         }
-        if(connectsWest)
+        if (connectsWest)
         {
             paneRenderer.renderWestPane();
-            if(!connectsBottom || !connectsBottomWest && !isolatedBottom)
+            if (!connectsBottom || !connectsBottomWest && !isolatedBottom)
                 paneRenderer.renderVerticalWE(-0.0001, 0.0, 0.5, 0.5, 0.0);
-            if(!connectsTop || !connectsTopWest && !isolatedTop)
+            if (!connectsTop || !connectsTopWest && !isolatedTop)
                 paneRenderer.renderVerticalWE(+1.0001, 0.0, 0.5, 0.5, 0.0);
             connections++;
         }
-        if(connectsEast)
+        if (connectsEast)
         {
             paneRenderer.renderEastPane();
-            if(!connectsBottom || !connectsBottomEast && !isolatedBottom)
+            if (!connectsBottom || !connectsBottomEast && !isolatedBottom)
                 paneRenderer.renderVerticalWE(-0.0002, 0.5, 1.0, 1.0, 0.5);
-            if(!connectsTop || !connectsTopEast && !isolatedTop)
+            if (!connectsTop || !connectsTopEast && !isolatedTop)
                 paneRenderer.renderVerticalWE(+1.0002, 0.5, 1.0, 1.0, 0.5);
             connections++;
         }
 
-
-        if(connections == 1)
+        if (connections == 1)
         {
-            if(connectsNorth) paneRenderer.renderHorizontalNS(0.5, 1.0, 0.0);
-            if(connectsSouth) paneRenderer.renderHorizontalNS(0.5, 0.0, 1.0);
-            if(connectsEast) paneRenderer.renderHorizontalWE(0.5, 0.0, 1.0);
-            if(connectsWest) paneRenderer.renderHorizontalWE(0.5, 1.0, 0.0);
-        } else if(connections == 4)
+            if (connectsNorth)
+                paneRenderer.renderHorizontalNS(0.5, 1.0, 0.0);
+            if (connectsSouth)
+                paneRenderer.renderHorizontalNS(0.5, 0.0, 1.0);
+            if (connectsEast)
+                paneRenderer.renderHorizontalWE(0.5, 0.0, 1.0);
+            if (connectsWest)
+                paneRenderer.renderHorizontalWE(0.5, 1.0, 0.0);
+        }
+        else if (connections == 4)
         {
             paneRenderer.renderHorizontalNS(0.0, 1.0, 0.0);
             paneRenderer.renderHorizontalNS(1.0, 0.0, 1.0);

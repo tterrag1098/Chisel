@@ -33,10 +33,12 @@ public class ItemChiselRenderer implements IItemRenderer
 
         renderItem.renderItemIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().renderEngine, stack, 0, 0);
 
-        if(stack.stackTagCompound == null) return;
+        if (stack.stackTagCompound == null)
+            return;
 
         ItemStack chiselTarget = ItemStack.loadItemStackFromNBT(stack.stackTagCompound.getCompoundTag("chiselTarget"));
-        if(chiselTarget == null) return;
+        if (chiselTarget == null)
+            return;
 
         GL11.glPushMatrix();
         GL11.glScalef(0.65f, 0.65f, 0.65f);

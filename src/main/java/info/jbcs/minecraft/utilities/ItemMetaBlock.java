@@ -16,7 +16,7 @@ public class ItemMetaBlock extends ItemBlock
     @Override
     public String getUnlocalizedName(ItemStack itemstack)
     {
-        if(itemstack == null)
+        if (itemstack == null)
         {
             return Block.getBlockFromItem(this).getUnlocalizedName();
         }

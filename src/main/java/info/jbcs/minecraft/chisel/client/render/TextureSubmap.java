@@ -1,9 +1,9 @@
 package info.jbcs.minecraft.chisel.client.render;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class TextureSubmap
 {
@@ -25,9 +25,9 @@ public class TextureSubmap
     public void TexturesStitched(TextureStitchEvent.Post event)
     {
 
-        for(int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
             {
                 icons[y * width + x] = new TextureVirtual(icon, width, height, x, y);
             }

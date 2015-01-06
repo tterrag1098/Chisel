@@ -28,26 +28,26 @@ public class EntitySnakestoneObsidianFX extends EntityFX
         tx = x + General.rand.nextDouble();
         ty = y + General.rand.nextDouble();
         tz = z + General.rand.nextDouble();
-        switch(General.rand.nextInt(6))
+        switch (General.rand.nextInt(6))
         {
-            case 0:
-                tx = x;
-                break;
-            case 1:
-                tx = x + 1;
-                break;
-            case 2:
-                ty = y;
-                break;
-            case 3:
-                ty = y + 1;
-                break;
-            case 4:
-                tz = z;
-                break;
-            case 5:
-                tz = z + 1;
-                break;
+        case 0:
+            tx = x;
+            break;
+        case 1:
+            tx = x + 1;
+            break;
+        case 2:
+            ty = y;
+            break;
+        case 3:
+            ty = y + 1;
+            break;
+        case 4:
+            tz = z;
+            break;
+        case 5:
+            tz = z + 1;
+            break;
         }
 
         double dx = (tx - posX) * 3;
@@ -82,7 +82,7 @@ public class EntitySnakestoneObsidianFX extends EntityFX
     @Override
     public void onUpdate()
     {
-        if(particleAge++ >= particleMaxAge)
+        if (particleAge++ >= particleMaxAge)
         {
             setDead();
             return;
@@ -93,23 +93,25 @@ public class EntitySnakestoneObsidianFX extends EntityFX
         double dz = tz - posZ;
 
         double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        if(distance == 0)
+        if (distance == 0)
         {
             setDead();
             return;
         }
-        if(distance < 0.4)
+        if (distance < 0.4)
         {
             particleAlpha = (float) (distance / 0.4);
-        } else if(particleAge < 20)
+        }
+        else if (particleAge < 20)
         {
             particleAlpha = 1.0f * particleAge / 20;
-        } else
+        }
+        else
         {
             particleAlpha = 1.0f;
         }
 
-        if(distance < speed)
+        if (distance < speed)
         {
             speed = distance;
         }

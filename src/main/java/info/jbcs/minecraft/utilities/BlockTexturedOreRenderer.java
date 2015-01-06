@@ -23,17 +23,18 @@ public class BlockTexturedOreRenderer implements ISimpleBlockRenderingHandler
     @Override
     public void renderInventoryBlock(Block blck, int meta, int modelID, RenderBlocks renderer)
     {
-        if(blck == null || !(blck instanceof BlockTexturedOre))
+        if (blck == null || !(blck instanceof BlockTexturedOre))
             return;
 
         BlockTexturedOre block = (BlockTexturedOre) blck;
 
-        if(block.icon != null)
+        if (block.icon != null)
         {
             renderer.overrideBlockTexture = block.icon;
             renderer.renderBlockAsItem(Blocks.stone, meta, 1.0f);
             renderer.overrideBlockTexture = null;
-        } else if(block.base != null)
+        }
+        else if (block.base != null)
         {
             renderer.renderBlockAsItem(block.base, meta, 1.0f);
         }
@@ -49,22 +50,24 @@ public class BlockTexturedOreRenderer implements ISimpleBlockRenderingHandler
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block blck, int modelId, RenderBlocks renderer)
     {
-        if(blck == null || !(blck instanceof BlockTexturedOre))
+        if (blck == null || !(blck instanceof BlockTexturedOre))
             return false;
         BlockTexturedOre block = (BlockTexturedOre) blck;
 
-        if(block.currentPass == 0)
+        if (block.currentPass == 0)
         {
-            if(block.icon != null)
+            if (block.icon != null)
             {
                 renderer.overrideBlockTexture = block.icon;
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.overrideBlockTexture = null;
-            } else if(block.base != null)
+            }
+            else if (block.base != null)
             {
                 renderer.renderBlockByRenderType(block.base, x, y, z);
             }
-        } else
+        }
+        else
         {
             renderer.setRenderBounds(bot, bot, bot, top, top, top);
             renderer.renderStandardBlock(block, x, y, z);

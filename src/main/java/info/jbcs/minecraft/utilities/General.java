@@ -1,6 +1,5 @@
 package info.jbcs.minecraft.utilities;
 
-import java.util.HashMap;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -25,12 +24,13 @@ public class General
         double dz = whereTo.posZ - what.posZ;
         double total = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-        if(total == 0)
+        if (total == 0)
         {
             what.motionX = 0;
             what.motionY = 0;
             what.motionZ = 0;
-        } else
+        }
+        else
         {
             what.motionX = dx / total * force;
             what.motionY = dy / total * force;
@@ -49,9 +49,9 @@ public class General
 
     public static Item getItem(ItemStack stack)
     {
-        if(stack == null)
+        if (stack == null)
             return null;
-        if(stack.getItem() == null)
+        if (stack.getItem() == null)
             return null;
 
         return stack.getItem();
@@ -74,7 +74,6 @@ public class General
         return tag.replaceAll("[Cc]hisel\\p{Punct}", "").replaceFirst("^tile\\.", "").replaceFirst("^item\\.", "");
     }
 
-
     public static MovingObjectPosition getMovingObjectPositionFromPlayer(World par1World, EntityPlayer par2EntityPlayer, boolean par3)
     {
         float var4 = 1.0F;
@@ -83,7 +82,7 @@ public class General
         double var7 = par2EntityPlayer.prevPosX + (par2EntityPlayer.posX - par2EntityPlayer.prevPosX) * var4;
         double var9 = par2EntityPlayer.prevPosY + (par2EntityPlayer.posY - par2EntityPlayer.prevPosY) * var4 + 1.62D - par2EntityPlayer.yOffset;
         double var11 = par2EntityPlayer.prevPosZ + (par2EntityPlayer.posZ - par2EntityPlayer.prevPosZ) * var4;
-        //TODO- 1.7.10 fix?
+        // TODO- 1.7.10 fix?
         Vec3 var13 = Vec3.createVectorHelper(var7, var9, var11);
         float var14 = MathHelper.cos(-var6 * 0.017453292F - (float) Math.PI);
         float var15 = MathHelper.sin(-var6 * 0.017453292F - (float) Math.PI);
@@ -93,7 +92,7 @@ public class General
         float var20 = var14 * var16;
         double var21 = 5.0D;
 
-        if(par2EntityPlayer instanceof EntityPlayerMP)
+        if (par2EntityPlayer instanceof EntityPlayerMP)
         {
             var21 = ((EntityPlayerMP) par2EntityPlayer).theItemInWorldManager.getBlockReachDistance();
         }

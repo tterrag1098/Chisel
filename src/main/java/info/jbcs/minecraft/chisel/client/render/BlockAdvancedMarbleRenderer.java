@@ -1,9 +1,9 @@
 package info.jbcs.minecraft.chisel.client.render;
 
+import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.chisel.api.ICarvable;
 import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.carving.CarvableVariation;
-import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.utilities.Drawing;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -21,7 +21,7 @@ public class BlockAdvancedMarbleRenderer implements ISimpleBlockRenderingHandler
 
     public BlockAdvancedMarbleRenderer()
     {
-        if(Chisel.RenderCTMId == 0)
+        if (Chisel.RenderCTMId == 0)
         {
             Chisel.RenderCTMId = RenderingRegistry.getNextAvailableRenderId();
 
@@ -43,32 +43,32 @@ public class BlockAdvancedMarbleRenderer implements ISimpleBlockRenderingHandler
 
         CarvableVariation var = ((ICarvable) block).getVariation(meta);
 
-        switch(var == null ? 0 : var.kind)
+        switch (var == null ? 0 : var.kind)
         {
-            case CarvableHelper.CTMX:
-                rendererCTM.blockAccess = world;
-                rendererCTM.renderMaxX = 1.0;
-                rendererCTM.renderMaxY = 1.0;
-                rendererCTM.renderMaxZ = 1.0;
+        case CarvableHelper.CTMX:
+            rendererCTM.blockAccess = world;
+            rendererCTM.renderMaxX = 1.0;
+            rendererCTM.renderMaxY = 1.0;
+            rendererCTM.renderMaxZ = 1.0;
 
-                rendererCTM.submap = var.submap;
-                rendererCTM.submapSmall = var.submapSmall;
+            rendererCTM.submap = var.submap;
+            rendererCTM.submapSmall = var.submapSmall;
 
-                rendererCTM.rendererOld = rendererOld;
+            rendererCTM.rendererOld = rendererOld;
 
-                return rendererCTM.renderStandardBlock(block, x, y, z);
-            case CarvableHelper.CTMV:
-                rendererColumn.blockAccess = world;
-                rendererColumn.renderMaxX = 1.0;
-                rendererColumn.renderMaxY = 1.0;
-                rendererColumn.renderMaxZ = 1.0;
+            return rendererCTM.renderStandardBlock(block, x, y, z);
+        case CarvableHelper.CTMV:
+            rendererColumn.blockAccess = world;
+            rendererColumn.renderMaxX = 1.0;
+            rendererColumn.renderMaxY = 1.0;
+            rendererColumn.renderMaxZ = 1.0;
 
-                rendererColumn.submap = var.seamsCtmVert;
-                rendererColumn.iconTop = var.iconTop;
+            rendererColumn.submap = var.seamsCtmVert;
+            rendererColumn.iconTop = var.iconTop;
 
-                return rendererColumn.renderStandardBlock(block, x, y, z);
-            default:
-                return rendererOld.renderStandardBlock(block, x, y, z);
+            return rendererColumn.renderStandardBlock(block, x, y, z);
+        default:
+            return rendererOld.renderStandardBlock(block, x, y, z);
         }
     }
 

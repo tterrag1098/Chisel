@@ -37,8 +37,10 @@ public class BlockMarblePillar extends BlockCarvable
     {
         CarvableVariation var = carverHelper.variations.get(metadata);
 
-        if(index >= 4) return var.iconTop;
-        if(var.seamsCtmVert == null) return var.icon;
+        if (index >= 4)
+            return var.iconTop;
+        if (var.seamsCtmVert == null)
+            return var.icon;
         return var.seamsCtmVert.icons[index];
     }
 

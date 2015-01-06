@@ -1,12 +1,12 @@
 package info.jbcs.minecraft.chisel.world;
 
-import cpw.mods.fml.common.IWorldGenerator;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-
-import java.util.Random;
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class GeneratorMarble implements IWorldGenerator
 {
@@ -21,7 +21,7 @@ public class GeneratorMarble implements IWorldGenerator
 
     protected void genStandardOre1(World world, Random random, int x, int z, int bot, int top)
     {
-        for(int l = 0; l < amount; ++l)
+        for (int l = 0; l < amount; ++l)
         {
             int i1 = x + random.nextInt(16);
             int j1 = bot + random.nextInt(top - bot);
@@ -36,4 +36,3 @@ public class GeneratorMarble implements IWorldGenerator
         genStandardOre1(world, random, chunkX * 16, chunkZ * 16, 40, 128);
     }
 }
-

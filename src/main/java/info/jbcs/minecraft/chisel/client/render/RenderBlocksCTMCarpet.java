@@ -15,12 +15,11 @@ public class RenderBlocksCTMCarpet extends RenderBlocksCTM
     {
         super.resetVertices();
 
-        for(int i = 0; i < Y.length; i++)
+        for (int i = 0; i < Y.length; i++)
         {
             Y[i] /= 16;
         }
     }
-
 
     @Override
     public void renderFaceXNeg(Block block, double x, double y, double z, IIcon icon)

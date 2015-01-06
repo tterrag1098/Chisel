@@ -57,70 +57,71 @@ public class BlockSnakeStoneRenderer implements ISimpleBlockRenderingHandler
         int type = meta & 0xC;
         int orient = meta & 0x3;
 
-
-        if(type == 0)
+        if (type == 0)
         {
-            switch(orient)
+            switch (orient)
             {
-                case 0:
-                    renderer.uvRotateTop = 1;
-                    renderer.uvRotateBottom = 2;
-                    break;
-                case 1:
-                    renderer.uvRotateTop = 1;
-                    renderer.uvRotateBottom = 1;
-                    break;
-                case 2:
-                    renderer.uvRotateTop = 0;
-                    renderer.uvRotateBottom = 3;
-                    break;
-                case 3:
-                    renderer.uvRotateTop = 0;
-                    renderer.uvRotateBottom = 0;
+            case 0:
+                renderer.uvRotateTop = 1;
+                renderer.uvRotateBottom = 2;
+                break;
+            case 1:
+                renderer.uvRotateTop = 1;
+                renderer.uvRotateBottom = 1;
+                break;
+            case 2:
+                renderer.uvRotateTop = 0;
+                renderer.uvRotateBottom = 3;
+                break;
+            case 3:
+                renderer.uvRotateTop = 0;
+                renderer.uvRotateBottom = 0;
             }
 
-        } else if((type == 4) || (type == 8))
+        }
+        else if ((type == 4) || (type == 8))
         {
-            switch(orient)
+            switch (orient)
             {
-                case 0:
-                    renderer.uvRotateTop = block.flipTopTextures ? 1 : 2;
-                    renderer.uvRotateBottom = 1;
-                    renderer.uvRotateWest = 2;
-                    break;
-                case 1:
-                    renderer.uvRotateTop = 1;
-                    renderer.uvRotateBottom = 1;
-                    renderer.uvRotateEast = 2;
-                    break;
-                case 2:
-                    renderer.uvRotateTop = block.flipTopTextures ? 0 : 3;
-                    renderer.uvRotateBottom = 0;
-                    renderer.uvRotateSouth = 2;
-                    break;
-                case 3:
-                    renderer.uvRotateTop = 0;
-                    renderer.uvRotateBottom = 0;
-                    renderer.uvRotateNorth = 2;
+            case 0:
+                renderer.uvRotateTop = block.flipTopTextures ? 1 : 2;
+                renderer.uvRotateBottom = 1;
+                renderer.uvRotateWest = 2;
+                break;
+            case 1:
+                renderer.uvRotateTop = 1;
+                renderer.uvRotateBottom = 1;
+                renderer.uvRotateEast = 2;
+                break;
+            case 2:
+                renderer.uvRotateTop = block.flipTopTextures ? 0 : 3;
+                renderer.uvRotateBottom = 0;
+                renderer.uvRotateSouth = 2;
+                break;
+            case 3:
+                renderer.uvRotateTop = 0;
+                renderer.uvRotateBottom = 0;
+                renderer.uvRotateNorth = 2;
             }
 
-        } else if(type == 12)
+        }
+        else if (type == 12)
         {
-            switch(orient)
+            switch (orient)
             {
-                case 0:
-                    renderer.uvRotateTop = 0;
-                    renderer.uvRotateBottom = 0;
-                    break;
-                case 1:
-                    renderer.uvRotateTop = 1;
-                    renderer.uvRotateBottom = 1;
-                    break;
-                case 2:
-                    renderer.uvRotateNorth = 2;
-                    renderer.uvRotateSouth = 2;
-                    renderer.uvRotateEast = 2;
-                    renderer.uvRotateWest = 2;
+            case 0:
+                renderer.uvRotateTop = 0;
+                renderer.uvRotateBottom = 0;
+                break;
+            case 1:
+                renderer.uvRotateTop = 1;
+                renderer.uvRotateBottom = 1;
+                break;
+            case 2:
+                renderer.uvRotateNorth = 2;
+                renderer.uvRotateSouth = 2;
+                renderer.uvRotateEast = 2;
+                renderer.uvRotateWest = 2;
             }
         }
     }

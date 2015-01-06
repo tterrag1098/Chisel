@@ -1,15 +1,15 @@
 package info.jbcs.minecraft.chisel.block;
 
-
 import info.jbcs.minecraft.chisel.Configurations;
+
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class BlockCloud extends BlockCarvable
 {
@@ -25,10 +25,11 @@ public class BlockCloud extends BlockCarvable
     {
         entity.fallDistance = 0.0F;
 
-        if(entity.motionY < 0.0D)
+        if (entity.motionY < 0.0D)
         {
             entity.motionY *= 0.0050000000000000001D;
-        } else if(entity.motionY > 0)
+        }
+        else if (entity.motionY > 0)
         {
             entity.motionY += 0.0285;
         }
@@ -40,13 +41,11 @@ public class BlockCloud extends BlockCarvable
         return false;
     }
 
-
     @Override
     public int getRenderBlockPass()
     {
         return Configurations.ghostCloud ? 1 : 0;
     }
-
 
     @Override
     public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l)

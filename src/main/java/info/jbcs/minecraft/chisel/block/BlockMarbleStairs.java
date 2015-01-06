@@ -1,9 +1,9 @@
 package info.jbcs.minecraft.chisel.block;
 
+import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.chisel.api.ICarvable;
 import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.carving.CarvableVariation;
-import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.chisel.client.render.BlockMarbleStairsRenderer;
 
 import java.util.List;
@@ -49,7 +49,7 @@ public class BlockMarbleStairs extends BlockStairs implements ICarvable
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
-        if(blockMeta == 0)
+        if (blockMeta == 0)
             carverHelper.registerBlockIcons("Chisel", this, register);
     }
 
@@ -73,27 +73,26 @@ public class BlockMarbleStairs extends BlockStairs implements ICarvable
         int i1 = par1World.getBlockMetadata(par2, par3, par4) & 4;
         int odd = par6ItemStack.getItemDamage();
 
-        if(l == 0)
+        if (l == 0)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 2 | i1 + odd, 2);
         }
 
-        if(l == 1)
+        if (l == 1)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 1 | i1 + odd, 2);
         }
 
-        if(l == 2)
+        if (l == 2)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 3 | i1 + odd, 2);
         }
 
-        if(l == 3)
+        if (l == 3)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 0 | i1 + odd, 2);
         }
     }
-
 
     @Override
     public int onBlockPlaced(World world, int x, int y, int z, int side, float hx, float hy, float hz, int damage)

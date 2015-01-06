@@ -1,9 +1,9 @@
 package info.jbcs.minecraft.chisel.block;
 
+import info.jbcs.minecraft.chisel.Chisel;
 import info.jbcs.minecraft.chisel.api.ICarvable;
 import info.jbcs.minecraft.chisel.carving.CarvableHelper;
 import info.jbcs.minecraft.chisel.carving.CarvableVariation;
-import info.jbcs.minecraft.chisel.Chisel;
 
 import java.util.List;
 
@@ -25,7 +25,6 @@ public class BlockMarbleCarpet extends BlockCarpet implements ICarvable
 
         setCreativeTab(Chisel.tabChisel);
     }
-
 
     @Override
     public IIcon getIcon(int side, int metadata)

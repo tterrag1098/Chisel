@@ -30,30 +30,31 @@ public class RenderBlocksColumn extends RenderBlocks
         boolean yp = connected(blockAccess, x, y + 1, z, block, metadata);
         boolean yn = connected(blockAccess, x, y - 1, z, block, metadata);
 
-        if(yp || yn)
+        if (yp || yn)
         {
             sides[0] = iconTop;
             sides[1] = iconTop;
 
-            if(yp && yn)
+            if (yp && yn)
                 sides[2] = submap.icons[2];
-            else if(yp)
+            else if (yp)
                 sides[2] = submap.icons[3];
             else
                 sides[2] = submap.icons[1];
 
             sides[3] = sides[4] = sides[5] = sides[2];
-        } else
+        }
+        else
         {
             boolean xp = connected(blockAccess, x + 1, y, z, block, metadata);
             boolean xn = connected(blockAccess, x - 1, y, z, block, metadata);
 
-            if(xp && (connected(blockAccess, x + 1, y + 1, z, block, metadata) || connected(blockAccess, x + 1, y - 1, z, block, metadata)))
+            if (xp && (connected(blockAccess, x + 1, y + 1, z, block, metadata) || connected(blockAccess, x + 1, y - 1, z, block, metadata)))
                 xp = false;
-            if(xn && (connected(blockAccess, x - 1, y + 1, z, block, metadata) || connected(blockAccess, x - 1, y - 1, z, block, metadata)))
+            if (xn && (connected(blockAccess, x - 1, y + 1, z, block, metadata) || connected(blockAccess, x - 1, y - 1, z, block, metadata)))
                 xn = false;
 
-            if(xp || xn)
+            if (xp || xn)
             {
                 uvRotateEast = 2;
                 uvRotateWest = 1;
@@ -63,29 +64,30 @@ public class RenderBlocksColumn extends RenderBlocks
                 sides[4] = iconTop;
                 sides[5] = iconTop;
 
-                if(xp && xn)
+                if (xp && xn)
                     sides[0] = submap.icons[2];
-                else if(xp)
+                else if (xp)
                     sides[0] = submap.icons[3];
                 else
                     sides[0] = submap.icons[1];
 
                 sides[1] = sides[2] = sides[3] = sides[0];
-            } else
+            }
+            else
             {
                 boolean zp = connected(blockAccess, x, y, z + 1, block, metadata);
                 boolean zn = connected(blockAccess, x, y, z - 1, block, metadata);
 
-                if(zp && (connected(blockAccess, x, y + 1, z + 1, block, metadata) || connected(blockAccess, x, y - 1, z + 1, block, metadata)))
+                if (zp && (connected(blockAccess, x, y + 1, z + 1, block, metadata) || connected(blockAccess, x, y - 1, z + 1, block, metadata)))
                     zp = false;
-                if(zp && (connected(blockAccess, x + 1, y, z + 1, block, metadata) || connected(blockAccess, x - 1, y, z + 1, block, metadata)))
+                if (zp && (connected(blockAccess, x + 1, y, z + 1, block, metadata) || connected(blockAccess, x - 1, y, z + 1, block, metadata)))
                     zp = false;
-                if(zn && (connected(blockAccess, x, y + 1, z - 1, block, metadata) || connected(blockAccess, x, y - 1, z - 1, block, metadata)))
+                if (zn && (connected(blockAccess, x, y + 1, z - 1, block, metadata) || connected(blockAccess, x, y - 1, z - 1, block, metadata)))
                     zn = false;
-                if(zn && (connected(blockAccess, x + 1, y, z - 1, block, metadata) || connected(blockAccess, x - 1, y, z - 1, block, metadata)))
+                if (zn && (connected(blockAccess, x + 1, y, z - 1, block, metadata) || connected(blockAccess, x - 1, y, z - 1, block, metadata)))
                     zn = false;
 
-                if(zp || zn)
+                if (zp || zn)
                 {
                     uvRotateSouth = 1;
                     uvRotateNorth = 2;
@@ -93,22 +95,22 @@ public class RenderBlocksColumn extends RenderBlocks
                     sides[2] = iconTop;
                     sides[3] = iconTop;
 
-                    if(zp && zn)
+                    if (zp && zn)
                         sides[0] = submap.icons[2];
-                    else if(zp)
+                    else if (zp)
                         sides[0] = submap.icons[1];
                     else
                         sides[0] = submap.icons[3];
 
                     sides[1] = sides[4] = sides[5] = sides[0];
-                } else
+                }
+                else
                 {
                     sides[0] = sides[1] = iconTop;
                     sides[2] = sides[3] = sides[4] = sides[5] = submap.icons[0];
                 }
             }
         }
-
 
         boolean flag = super.renderStandardBlock(block, x, y, z);
 
@@ -121,7 +123,6 @@ public class RenderBlocksColumn extends RenderBlocks
 
         return flag;
     }
-
 
     @Override
     public void renderFaceXNeg(Block block, double x, double y, double z, IIcon icon)
@@ -140,7 +141,6 @@ public class RenderBlocksColumn extends RenderBlocks
     {
         super.renderFaceZNeg(block, x, y, z, sides[2]);
     }
-
 
     @Override
     public void renderFaceZPos(Block block, double x, double y, double z, IIcon icon)

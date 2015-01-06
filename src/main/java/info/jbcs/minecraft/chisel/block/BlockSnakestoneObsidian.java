@@ -1,6 +1,5 @@
 package info.jbcs.minecraft.chisel.block;
 
-
 import info.jbcs.minecraft.chisel.client.GeneralChiselClient;
 
 import java.util.Random;
@@ -32,7 +31,7 @@ public class BlockSnakestoneObsidian extends BlockSnakestone
     {
         super.registerBlockIcons(register);
 
-        for(int i = 0; i < particles.length; i++)
+        for (int i = 0; i < particles.length; i++)
         {
             particles[i] = register.registerIcon(iconPrefix + "particles/" + i);
         }

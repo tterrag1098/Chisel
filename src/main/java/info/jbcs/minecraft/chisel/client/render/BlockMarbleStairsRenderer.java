@@ -33,7 +33,7 @@ public class BlockMarbleStairsRenderer implements ISimpleBlockRenderingHandler
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block blck, int modelId, RenderBlocks renderer)
     {
-        if(blck == null || !(blck instanceof BlockMarbleStairs))
+        if (blck == null || !(blck instanceof BlockMarbleStairs))
             return false;
         BlockMarbleStairs block = (BlockMarbleStairs) blck;
 

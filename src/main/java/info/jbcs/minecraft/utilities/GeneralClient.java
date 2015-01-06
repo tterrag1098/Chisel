@@ -18,7 +18,6 @@ public class GeneralClient
         Minecraft.getMinecraft().theWorld.playSound(x + 0.5, y + 0.5, z + 0.5, sound, 0.3f + 0.7f * rand.nextFloat(), 0.6f + 0.4f * rand.nextFloat(), true);
     }
 
-
     public static IIcon getMissingIcon()
     {
         return ((TextureMap) Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.locationBlocksTexture)).getAtlasSprite("missingno");
@@ -30,7 +29,7 @@ public class GeneralClient
     {
         ResourceLocation res = resources.get(textureName);
 
-        if(res == null)
+        if (res == null)
         {
             res = new ResourceLocation(textureName);
             resources.put(textureName, res);

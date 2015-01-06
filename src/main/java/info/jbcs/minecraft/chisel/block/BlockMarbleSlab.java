@@ -1,7 +1,8 @@
 package info.jbcs.minecraft.chisel.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -12,9 +13,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.List;
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMarbleSlab extends BlockCarvable
 {
@@ -51,10 +51,11 @@ public class BlockMarbleSlab extends BlockCarvable
     @Override
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        if(isBottom)
+        if (isBottom)
         {
             setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-        } else
+        }
+        else
         {
             setBlockBounds(0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F);
         }
@@ -108,13 +109,13 @@ public class BlockMarbleSlab extends BlockCarvable
     public IIcon getIcon(int side, int metadata)
     {
         return carverHelper.getIcon(side, metadata);
-//		return master.getIcon(side, metadata);
+        // return master.getIcon(side, metadata);
     }
 
     @Override
     public void getSubBlocks(Item block, CreativeTabs tabs, List list)
     {
-        if(isBottom)
+        if (isBottom)
             super.getSubBlocks(block, tabs, list);
     }
 

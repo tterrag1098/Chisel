@@ -13,7 +13,7 @@ public class BlockMarbleStairsMaker
     public CarvableHelper carverHelper;
     BlockMarbleStairs blocks[];
 
-    //int idStart;
+    // int idStart;
     Block blockBase;
     String blockName;
 
@@ -31,24 +31,23 @@ public class BlockMarbleStairsMaker
     public void create(BlockMarbleStairsMakerCreator creator, String name)
     {
         blocks = new BlockMarbleStairs[carverHelper.variations.size() / 2];
-        for(int i = 0; i < blocks.length; i++)
+        for (int i = 0; i < blocks.length; i++)
         {
             String n = name + "." + i;
-            blocks[i] = creator == null ?
-                    new BlockMarbleStairs(blockBase, i * 2, carverHelper) :
-                    creator.create(blockBase, i * 2, carverHelper);
+            blocks[i] = creator == null ? new BlockMarbleStairs(blockBase, i * 2, carverHelper) : creator.create(blockBase, i * 2, carverHelper);
 
             blocks[i].setBlockName(n);
             GameRegistry.registerBlock(blocks[i], ItemCarvable.class, n);
 
-            for(int meta = 0; meta < 2 && i * 2 + meta < carverHelper.variations.size(); meta++)
+            for (int meta = 0; meta < 2 && i * 2 + meta < carverHelper.variations.size(); meta++)
             {
                 CarvableVariation variation = carverHelper.variations.get(i * 2 + meta);
 
-                for(int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                     carverHelper.registerVariation(name + ".orientation." + j, variation, blocks[i], j + meta * 8);
 
-                CraftingManager.getInstance().addRecipe(new ItemStack(blocks[i], 4, meta * 8), new Object[]{"*  ", "** ", "***", '*', new ItemStack(blockBase, 1, i * 2 + meta)});
+                CraftingManager.getInstance().addRecipe(new ItemStack(blocks[i], 4, meta * 8),
+                        new Object[] { "*  ", "** ", "***", '*', new ItemStack(blockBase, 1, i * 2 + meta) });
             }
 
             CarvableHelper.chiselBlocks.add(blocks[i]);

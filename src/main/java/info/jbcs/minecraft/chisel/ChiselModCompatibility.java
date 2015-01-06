@@ -1,12 +1,11 @@
 package info.jbcs.minecraft.chisel;
 
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import info.jbcs.minecraft.chisel.carving.Carving;
 import net.minecraft.block.Block;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class ChiselModCompatibility
 {
-
 
     abstract class ClassCompat
     {
@@ -16,24 +15,30 @@ public class ChiselModCompatibility
         {
             try
             {
-                if((cl = Class.forName(name)) != null)
+                if ((cl = Class.forName(name)) != null)
                     action();
-            } catch(ClassNotFoundException e)
+            }
+            catch (ClassNotFoundException e)
             {
-                //e.printStackTrace();
-            } catch(IllegalArgumentException e)
-            {
-                e.printStackTrace();
-            } catch(IllegalAccessException e)
-            {
-                e.printStackTrace();
-            } catch(NoSuchFieldException e)
+                // e.printStackTrace();
+            }
+            catch (IllegalArgumentException e)
             {
                 e.printStackTrace();
-            } catch(SecurityException e)
+            }
+            catch (IllegalAccessException e)
             {
                 e.printStackTrace();
-            } catch(Exception e)
+            }
+            catch (NoSuchFieldException e)
+            {
+                e.printStackTrace();
+            }
+            catch (SecurityException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
@@ -49,7 +54,7 @@ public class ChiselModCompatibility
             {
                 block = (Block) ClassCompat.this.cl.getField(variableName).get(null);
 
-                if(block != null)
+                if (block != null)
                     action();
             }
 
@@ -93,7 +98,6 @@ public class ChiselModCompatibility
 
         abstract void action();
     }
-
 
     public void postInit(FMLPostInitializationEvent event)
     {

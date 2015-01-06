@@ -1,9 +1,9 @@
 package info.jbcs.minecraft.chisel;
 
+import info.jbcs.minecraft.chisel.carving.Carving;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import info.jbcs.minecraft.chisel.carving.Carving;
 
 public class Compatibility
 {
@@ -14,7 +14,7 @@ public class Compatibility
 
         addSupport("ProjRed|Exploration", "projectred.exploration.stone", "marble", 0, 99);
         addSupport("bluepower", "marble", "marble", 0, 99);
-        
+
         addSupport("PFAAGeologica", "strongStone", "marble", 5, 99);
         addSupport("PFAAGeologica", "strongStoneSlab", "marbleSlab", 5, 99);
         addSupport("PFAAGeologica", "strongStoneBrickStairs.marble", "marbleStairs", 0, 99);
@@ -27,7 +27,7 @@ public class Compatibility
 
     public static void addSupport(String modname, String blockname, String name, int metadata, int order)
     {
-        if(Loader.isModLoaded(modname) && GameRegistry.findBlock(modname, blockname) != null)
+        if (Loader.isModLoaded(modname) && GameRegistry.findBlock(modname, blockname) != null)
         {
             Carving.chisel.addVariation(name, GameRegistry.findBlock(modname, blockname), metadata, order);
             GameRegistry.findBlock(modname, blockname).setHarvestLevel("chisel", 0, 0);
