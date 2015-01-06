@@ -874,7 +874,6 @@ public class ChiselBlocks
                 }
                 blockPlanks[i].carverHelper.register(blockPlanks[i], orename);
                 Carving.chisel.addVariation(orename, Blocks.planks, i, 0);
-                Blocks.planks.setHarvestLevel("chisel", 0, i);
                 blockPlanks[i].setHarvestLevel("axe", 0);
 
                 Carving.chisel.setVariationSound(orename, Chisel.MOD_ID + ":chisel.wood");
@@ -1336,7 +1335,5 @@ public class ChiselBlocks
         {
             // TODO
         }
-
-        Blocks.stone.setHarvestLevel("chisel", 0, 0);
     }
 }
