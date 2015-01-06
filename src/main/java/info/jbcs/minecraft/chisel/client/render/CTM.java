@@ -3,6 +3,7 @@ package info.jbcs.minecraft.chisel.client.render;
 import info.jbcs.minecraft.chisel.api.IFacade;
 import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class CTM
 {
@@ -207,37 +208,19 @@ public class CTM
         return texture;
     }
 
-    private static boolean isConnected(IBlockAccess world, int x, int y, int z, int side, Block block, int meta)
+    public static boolean isConnected(IBlockAccess world, int x, int y, int z, int side, Block block, int meta)
     {
-        int x2 = x, y2 = y, z2 = z;
+        ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[side];
 
-        switch (side)
-        {
-        case 0:
-            y2--;
-            break;
-        case 1:
-            y2++;
-            break;
-        case 2:
-            z2--;
-            break;
-        case 3:
-            z2++;
-            break;
-        case 4:
-            x2--;
-            break;
-        case 5:
-            x2++;
-            break;
-        }
+        int x2 = x + dir.offsetX;
+        int y2 = y + dir.offsetY;
+        int z2 = z + dir.offsetZ;
 
         return getBlockOrFacade(world, x, y, z, side).equals(block) && getBlockOrFacadeMetadata(world, x, y, z, side) == meta
-                && (!getBlockOrFacade(world, x2, y2, z2, side).equals(block) || getBlockOrFacadeMetadata(world, x2, y2, z2, side) != meta);
+                && !(getBlockOrFacade(world, x2, y2, z2, side).equals(block) && getBlockOrFacadeMetadata(world, x2, y2, z2, side) == meta);
     }
 
-    private static int getBlockOrFacadeMetadata(IBlockAccess world, int x, int y, int z, int side)
+    public static int getBlockOrFacadeMetadata(IBlockAccess world, int x, int y, int z, int side)
     {
         Block blk = world.getBlock(x, y, z);
         if (blk instanceof IFacade)
@@ -247,7 +230,7 @@ public class CTM
         return world.getBlockMetadata(x, y, z);
     }
 
-    private static Block getBlockOrFacade(IBlockAccess world, int x, int y, int z, int side)
+    public static Block getBlockOrFacade(IBlockAccess world, int x, int y, int z, int side)
     {
         Block blk = world.getBlock(x, y, z);
         if (blk instanceof IFacade)

@@ -19,8 +19,10 @@ import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -162,7 +164,7 @@ public class CarvableHelper
             return null;
 
         return variation;
-    }
+    }   
 
     public IIcon getIcon(int side, int metadata)
     {
@@ -214,10 +216,7 @@ public class CarvableHelper
 
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
     {
-        int metadata = world.getBlockMetadata(x, y, z);
-
-        if (metadata < 0 || metadata > 15)
-            metadata = 0;
+        int metadata = MathHelper.clamp_int(world.getBlockMetadata(x, y, z), 0, 15);
 
         CarvableVariation variation = map[metadata];
         if (variation == null)
@@ -242,8 +241,8 @@ public class CarvableHelper
                 return variation.iconTop;
 
             Block block = world.getBlock(x, y, z);
-            boolean topConnected = block.equals(world.getBlock(x, y + 1, z)) && metadata == world.getBlockMetadata(x, y + 1, z);
-            boolean botConnected = block.equals(world.getBlock(x, y - 1, z)) && metadata == world.getBlockMetadata(x, y - 1, z);
+            boolean topConnected = CTM.isConnected(world, x, y + 1, z, side, block, metadata);
+            boolean botConnected = CTM.isConnected(world, x, y - 1, z, side, block, metadata);
 
             if (topConnected && botConnected)
                 return variation.seamsCtmVert.icons[2];
@@ -265,13 +264,13 @@ public class CarvableHelper
 
             if (side < 4)
             {
-                p = isSame(world, x - 1, y, z, block, metadata);
-                n = isSame(world, x + 1, y, z, block, metadata);
+                p = CTM.isConnected(world, x - 1, y, z, side, block, metadata);
+                n = CTM.isConnected(world, x + 1, y, z, side, block, metadata);
             }
             else
             {
-                p = isSame(world, x, y, z + 1, block, metadata);
-                n = isSame(world, x, y, z - 1, block, metadata);
+                p = CTM.isConnected(world, x, y, z - 1, side, block, metadata);
+                n = CTM.isConnected(world, x, y, z + 1, side, block, metadata);
             }
 
             if (p && n)
@@ -305,14 +304,14 @@ public class CarvableHelper
         registerBlock(block, name, ItemCarvable.class);
     }
 
-    void registerBlock(Block block, String name, Class cl)
+    void registerBlock(Block block, String name, Class<? extends ItemBlock> cl)
     {
         block.setBlockName(name);
         GameRegistry.registerBlock(block, cl, name);
         chiselBlocks.add(block);
     }
 
-    public void register(Block block, String name, Class cl)
+    public void register(Block block, String name, Class<? extends ItemBlock> cl)
     {
         registerBlock(block, name, cl);
 
@@ -438,17 +437,13 @@ public class CarvableHelper
         }
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void registerSubBlocks(Block block, CreativeTabs tabs, List list)
     {
         for (CarvableVariation variation : variations)
         {
             list.add(new ItemStack(block, 1, variation.metadata));
         }
-    }
-
-    private boolean isSame(IBlockAccess world, int x, int y, int z, Block block, int meta)
-    {
-        return world.getBlock(x, y, z).equals(block) && world.getBlockMetadata(x, y, z) == meta;
     }
 
     public void setChiselBlockName(String name)
