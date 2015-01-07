@@ -18,8 +18,8 @@ public class Carving
     HashMap<String, CarvingGroup> carvingGroupsByOre = new HashMap<String, CarvingGroup>();
     HashMap<String, CarvingGroup> carvingGroupsByVariation = new HashMap<String, CarvingGroup>();
 
-    public static Carving chisel = new Carving();
-    public static Carving needle = new Carving();
+    public static final Carving chisel = new Carving();
+    public static final Carving needle = new Carving();
 
     String key(Item item, int metadata)
     {

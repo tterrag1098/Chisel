@@ -14,7 +14,9 @@ import info.jbcs.minecraft.chisel.client.render.BlockTexturedOreRenderer;
 import info.jbcs.minecraft.chisel.client.render.ItemChiselRenderer;
 import info.jbcs.minecraft.chisel.entity.EntityBallOMoss;
 import info.jbcs.minecraft.chisel.entity.EntityCloudInABottle;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -46,5 +48,11 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerEntityRenderingHandler(EntityBallOMoss.class, new RenderSnowball(Chisel.itemBallOMoss));
 
         MinecraftForgeClient.registerItemRenderer(Chisel.chisel, renderer);
+    }
+    
+    @Override
+    public World getClientWorld()
+    {
+        return Minecraft.getMinecraft().theWorld;
     }
 }

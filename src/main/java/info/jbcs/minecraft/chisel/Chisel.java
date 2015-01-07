@@ -134,6 +134,8 @@ public class Chisel
         Configurations.config = new Configuration(configFile);
         Configurations.config.load();
         Configurations.refreshConfig();
+        
+        PacketHandler.init();
 
         tabChisel = new CreativeTabs("tabChisel")
         {
@@ -196,7 +198,6 @@ public class Chisel
 
         proxy.init();
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(new ChiselLeftClick());
         FMLCommonHandler.instance().bus().register(instance);
 
         FMLInterModComms.sendMessage("Waila", "register", "info.jbcs.minecraft.chisel.Waila.register");
