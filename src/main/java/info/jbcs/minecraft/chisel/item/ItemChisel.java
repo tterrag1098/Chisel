@@ -53,7 +53,13 @@ public class ItemChisel extends ItemTool implements IChiselMode
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase breaker)
     {
-        return true;
+        return true; // prevent damaging
+    }
+    
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase player, EntityLivingBase hit)
+    {
+        return true; // prevent damaging
     }
 
     @SubscribeEvent
@@ -111,6 +117,10 @@ public class ItemChisel extends ItemTool implements IChiselMode
         world.setBlock(x, y, z, v.block);
         world.setBlockMetadataWithNotify(x, y, z, v.meta, 3);
         player.getCurrentEquippedItem().damageItem(1, player);
+        if (player.getCurrentEquippedItem().stackSize <= 0)
+        {
+            player.destroyCurrentEquippedItem();
+        }
     }
 
     public ItemStack getTarget(ItemStack chisel)

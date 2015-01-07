@@ -65,6 +65,10 @@ public class SlotChiselSelection extends Slot
         String sound = container.carving.getVariationSound(itemstack.getItem(), itemstack.getItemDamage());
         player.worldObj.playSoundAtEntity(player, sound, 0.3f + 0.7f * General.rand.nextFloat(), 0.6f + 0.4f * General.rand.nextFloat());
         player.getCurrentEquippedItem().damageItem(1, player);
+        if (player.getCurrentEquippedItem().stackSize <= 0)
+        {
+            player.destroyCurrentEquippedItem();
+        }
     }
 
     ContainerChisel container;
