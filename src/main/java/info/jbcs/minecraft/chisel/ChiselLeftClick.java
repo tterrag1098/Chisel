@@ -20,9 +20,11 @@ import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * Unused. Left around in case code is still useful later.
+ */
 public class ChiselLeftClick
 {
-
     HashMap<String, Long> chiselUseTime = new HashMap<String, Long>();
     HashMap<String, String> chiselUseLocation = new HashMap<String, String>();
     Random random = new Random();
